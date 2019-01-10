@@ -1,0 +1,16 @@
+List of what needs to be done to create the password manager for Connor's uncle Dave:
+
+Planning:
+- Schedule --> Together
+- Algorithm --> Connor
+- Pseudocode --> Jovin
+- UML Diagram --> Together
+
+Implementation/Creation
+- Creating the GUI --> Together
+- Function that creates random, strong passwords for the user to use --> Connor
+- Figuring out how to store the passwords when the program has been closed --> Jovin
+- Creating security questions for access to the program and storing the answers to those questions --> Jovin
+- Allowing the user to change and delete previously stored passwords --> Connor
+
+The testing & Analysis stages will be done together.
