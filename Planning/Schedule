@@ -1,0 +1,14 @@
+Schedule for our Iterative Model:
+
+*Idea Generation is already complete*
+
+Planning:
+Algorithm (Connor), Pseudocode (Jovin) and UML Diagram (Jovin & Connor) - December 21 (last day before winter break).
+
+Implementation:
+
+Creating the basic GUI (Jovin & Connor) - work on during the break! Should be done for January 7 (first day of school after winter break)
+Figuring out how to store passwords when program is closed (Jovin) - Done for January 11 (at the end of class)
+Function that creates random, strong passwords for the user to use (Connor) - Done for January 11 (at the end of class)
+Creating security questions for access to the program and storing the answers - Done for January 16 (at the beginning of class)
+Allowing the user to change and delete previously stored password - Done for January 16 (at the beginning of class)
