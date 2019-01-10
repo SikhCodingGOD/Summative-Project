@@ -1,0 +1,9 @@
+Requirements:
+Client (Uncle Dave) has asked for our program to:
+Store passwords 
+Create random passwords
+Have an easy to navigate interface (GUI)
+Ideally little to no actual typing for the user(ease of use)(mostly buttons to neavigate)
+Have Security questions to access the Program
+Have functionality to change and delete certain passwords
+Be able to store passwords once program is closed (store on file)
