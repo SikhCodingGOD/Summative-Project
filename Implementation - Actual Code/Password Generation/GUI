@@ -153,7 +153,7 @@ public class GUI extends JPanel implements ActionListener {
         charactersToBeUsed += Numbers_CHARACTERS;     
         charactersToBeUsed += SCharacter_CHARACTERS;
         
-        PasswordGenerator pg = new PasswordGenerator(charactersToBeUsed);
+        PasswordScrambler pg = new PasswordScrambler(charactersToBeUsed);
         int numberOfChars = Integer.parseInt(PassWordLength.getText());
 
         String pw = pg.generate(numberOfChars);
