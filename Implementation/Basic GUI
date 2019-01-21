@@ -1,0 +1,25 @@
+package GUI;
+
+import javax.swing.JOptionPane;
+
+public class GUI {
+    
+    public static void main(String[] args) {
+        
+        String firstNum = JOptionPane.showInputDialog("Enter first number");
+        String secondNum = JOptionPane.showInputDialog("Enter second number");
+        
+        //showInputDialog sees everything that's inputted as a string
+        
+        int num1 = Integer.parseInt(firstNum);
+        int num2 = Integer.parseInt(secondNum);
+        int sum = num1 + num2;
+        
+        //showMessageDialog ouputs to the screen
+        //parameters 1-position 2-displayed text 3-what appears on the title bar
+        //4-message that pops up
+        
+        JOptionPane.showMessageDialog(null, "The answer is " + sum, "Password Manager", JOptionPane.PLAIN_MESSAGE);
+        
+    }
+}
