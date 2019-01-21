@@ -1,0 +1,32 @@
+UML DIAGRAM for Password Generator
+
+Classes    Main                  Password Scrambler                GUI
+
+States     GUI                    UAlphabet_CHARACTERS             LAlphabet_CHARACTERS
+                                  OriginalPasswordLength           UAlphabet_CHARACTERS
+                                  charactersToBeUsed               Numbers_CHARACTERS
+                                  Parts                            SCharacter_CHARACTERS
+                                  String                           frame
+                                  password                         MakeButton
+                                                                   CopyButton
+                                                                   jScrollPane1
+                                                                   PasswordBox
+                                                                   Title
+                                                                   NumberSlider
+                                                                   InfoNumberOfChars
+                                                                   PassWordLength
+                                                                   
+
+
+
+
+
+
+Methods    loadGUI, Main         PasswordScrambler                createAndShowGUI
+                                 generate                         initComponents
+                                                                  MakeButtonActionPerformed
+                                                                  sliderStateChanged
+                                                                  copyToClipboard
+                                                                  actionPerformed
+                                                                  
+                                 
