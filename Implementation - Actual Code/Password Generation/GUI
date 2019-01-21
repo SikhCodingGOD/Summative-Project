@@ -136,13 +136,13 @@ public class GUI extends JPanel implements ActionListener {
         if (SpecialOption.isSelected()) {
         charactersToBeUsed += SCharacter_CHARACTERS;}
         
-        PasswordScrambler pg = new PasswordScrambler(charactersToBeUsed);
+        PasswordScrambler GenPass = new PasswordScrambler(charactersToBeUsed);
         int numberOfChars = Integer.parseInt(PassWordLength.getText());    //sends to making the password
 
-        String pw = pg.generate(numberOfChars);
+        String FinalPassword = GenPass.generate(numberOfChars);
 
         PasswordBox.setEditable(false);
-        PasswordBox.setText(pw);
+        PasswordBox.setText(FinalPassword);
     }                                           
 
     private void sliderStateChanged(javax.swing.event.ChangeEvent evt) {                                    
