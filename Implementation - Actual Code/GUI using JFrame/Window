@@ -1,0 +1,105 @@
+package PasswordManager;
+
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JFrame;
+import javax.swing.JTextField;
+import javax.swing.JPasswordField;
+import javax.swing.JOptionPane;
+import javax.swing.JLabel;
+
+public class Window extends JFrame {
+    
+    private JLabel subTitle;
+    private JLabel mainHeading;
+    private JTextField item1;
+    private JTextField item2;
+    private JTextField item3;
+    private JPasswordField passwordField;
+    
+    public Window() {
+        super("Password Manager"); //title on the window
+        setLayout(new GridBagLayout()); //default layout
+        
+        subTitle = new JLabel("Welcome to the Password Manager brought to you by Long & Short Inc.");
+        subTitle.setToolTipText("This sentence shows up magically"); //appears when label is hovered over
+        
+        mainHeading = new JLabel("Please choose a security question to start using the Password Manager.");
+        
+        item1 = new JTextField(10); //the parameter of 10 is the length of the text field
+        
+        item2 = new JTextField("enter text here"); //the parameter sets default text in the field
+        
+        item3 = new JTextField("uneditable", 20);
+        item3.setEditable(false); //text field is uneditable
+        
+        passwordField = new JPasswordField("mypass");
+        
+        
+        GridBagConstraints gc = new GridBagConstraints();
+        
+        gc.anchor = GridBagConstraints.LINE_END;
+        gc.weightx = 0.5; //amount of horizontal space for each grid box
+        gc.weighty = 0.5; //amount of vertical space for each grid box
+        
+        gc.gridx = 0;
+        gc.gridy = 0;
+        add(subTitle, gc);
+        
+        gc.gridx = 0;
+        gc.gridy = 1;
+        add(mainHeading, gc);
+        
+        gc.gridx = 1;
+        gc.gridy = 0;
+        add(item1, gc);
+        
+        gc.gridx = 1;
+        gc.gridy = 1;
+        add(item2, gc);
+        
+        gc.gridx = 0;
+        gc.gridy = 2;
+        add(item3, gc);
+        
+        gc.fill = GridBagConstraints.BOTH;
+        gc.gridx = 1;
+        gc.gridy = 2;
+        add(passwordField, gc);
+        
+        
+        EventHandler handler = new EventHandler();
+        item1.addActionListener(handler);
+        item2.addActionListener(handler);
+        item3.addActionListener(handler);
+        passwordField.addActionListener(handler);
+        
+    }
+    
+    private class EventHandler implements ActionListener {
+        
+        public void actionPerformed(ActionEvent event) { //automatically executed when an event occurs
+            
+            String string = "";
+            
+            if(event.getSource() == item1) {
+                string = String.format("field 1: %s", event.getActionCommand());
+            }
+            else if (event.getSource() == item2) {
+                string = String.format("field 2: %s", event.getActionCommand());
+            }
+            else if (event.getSource() == item3) {
+                string = String.format("field 3: %s", event.getActionCommand());
+            }
+            else if (event.getSource() == passwordField) {
+                string = String.format("password field is: %s", event.getActionCommand());
+            }
+            
+            JOptionPane.showMessageDialog(null, string);
+        }
+        
+    }
+    
+}
