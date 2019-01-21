@@ -1,0 +1,17 @@
+Algorithm
+
+The code will open to a main menu. 
+This main menu will require security questions to unlock.
+The security questions are predetermined and are very general so they apply to everyone
+These must be set before on the first time the app is opened
+The options on the menu will include Create password, see existing passwords, manage passwords
+These will be buttons to direct user to those different functions
+The Password Generation will randomize the use of numbers letters and special characters
+There will be a option to customize the length of the password
+The generator will allow the user to Copy a generated password or generate a new one
+If the user goes to password viewer all passwords will be displayed
+The site/app name the password goes with will accompany the password
+There will be a main menu return option 
+The password manager will let the user delete passwords so they can be replaced later
+this will have a main menu return button
+On close the application will have written all passwords to a file and therefore saving it
