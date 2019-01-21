@@ -1,0 +1,21 @@
+package GUI;
+
+import java.awt.FlowLayout;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+public class Window extends JFrame {
+    
+    private JLabel object;
+    
+    public Window() {
+        super("Password Manager"); //title on the window
+        setLayout(new FlowLayout()); //default layout
+        
+        object = new JLabel("I am creating a GUI!");
+        object.setToolTipText("This sentence shows up magically"); //appears when label is hovered over
+        object(item1);
+        
+    }
+    
+}
