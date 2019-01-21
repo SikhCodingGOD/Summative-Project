@@ -2,17 +2,17 @@ package passwordgenerator;
 
 import java.awt.EventQueue;
 
-public class Main {
+public class Main {   //runningthe program
 
-    private static void loadGUI() {
+    private static void loadGUI() {  
             EventQueue.invokeLater(() -> {
                 GUI gui = new GUI();
-                gui.createAndShowGUI();
+                gui.createAndShowGUI();  //all gui is intitalized
                 gui.setVisible(true);
             });
     }
 
     public static void main(String[] args) {
-        loadGUI();
+        loadGUI();   //loading the gui
     }
 }
