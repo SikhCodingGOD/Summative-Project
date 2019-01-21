@@ -1,0 +1,197 @@
+package passwordgenerator;
+
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
+import java.awt.Toolkit;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JPanel;
+import javax.swing.JFrame;
+import javax.swing.JSlider;
+
+
+
+
+public class GUI extends JPanel implements ActionListener {
+    private static final String LAlphabet_CHARACTERS = "abcdefghijklmnopqrstuvwxyz";
+    private static final String UAlphabet_CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    private static final String Numbers_CHARACTERS = "1234567890";
+    private static final String SCharacter_CHARACTERS = "~!@#$%^&*()_|";
+
+    
+    public void createAndShowGUI() {
+        initComponents();
+        JFrame frame = new JFrame("password generator");
+        frame.add(this);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+    }
+
+    
+                            
+    private void initComponents() {
+
+        MakeButton = new javax.swing.JButton();
+        CopyButton = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        PasswordBox = new javax.swing.JTextArea();
+        
+        Title = new javax.swing.JLabel();
+        
+        NumberSlider = new javax.swing.JSlider();
+        InfoNumberOfChars = new javax.swing.JLabel();
+        PassWordLength = new javax.swing.JLabel();
+        
+
+        MakeButton.setMnemonic('\r');
+        MakeButton.setText("Create a password");
+        MakeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MakeButtonActionPerformed(evt);
+            }
+        });
+
+        CopyButton.setText("Copy this password");
+        CopyButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                copyToClipboard(evt);
+            }
+        });
+
+        PasswordBox.setColumns(20);
+        PasswordBox.setRows(5);
+        jScrollPane1.setViewportView(PasswordBox);
+
+        
+        
+
+        
+        
+
+        Title.setText("Password Generation");
+
+        
+        
+
+        NumberSlider.setMajorTickSpacing(5);
+        NumberSlider.setMaximum(25);
+        NumberSlider.setMinimum(5);
+        NumberSlider.setMinorTickSpacing(1);
+        NumberSlider.setPaintLabels(true);
+        NumberSlider.setPaintTicks(true);
+        NumberSlider.setValue(10);
+        NumberSlider.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sliderStateChanged(evt);
+            }
+        });
+
+        InfoNumberOfChars.setText("number of characters:");
+
+        PassWordLength.setText("10");
+
+       
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                .addComponent(Title))
+                .addGroup(layout.createSequentialGroup()
+                .addComponent(NumberSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)      
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()               
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE) )))))
+                .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()       
+                .addComponent(CopyButton)
+                .addComponent(MakeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createSequentialGroup()
+                .addComponent(InfoNumberOfChars)
+                .addComponent(PassWordLength, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(51, Short.MAX_VALUE))
+                .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup())
+                .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))))));
+        
+        
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                .addComponent(Title)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(PassWordLength)
+                .addComponent(InfoNumberOfChars)
+                .addComponent(NumberSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(CopyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(MakeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                )
+        ));
+    }                        
+
+    private void MakeButtonActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        String charactersToBeUsed = "";
+        charactersToBeUsed = UAlphabet_CHARACTERS; // always
+        charactersToBeUsed += LAlphabet_CHARACTERS;        
+        charactersToBeUsed += Numbers_CHARACTERS;     
+        charactersToBeUsed += SCharacter_CHARACTERS;
+        
+        PasswordGenerator pg = new PasswordGenerator(charactersToBeUsed);
+        int numberOfChars = Integer.parseInt(PassWordLength.getText());
+
+        String pw = pg.generate(numberOfChars);
+
+        PasswordBox.setEditable(false);
+        PasswordBox.setText(pw);
+    }                                           
+
+    private void sliderStateChanged(javax.swing.event.ChangeEvent evt) {                                    
+        JSlider source = (JSlider) evt.getSource();
+        if (!source.getValueIsAdjusting()) {
+            PassWordLength.setText(Integer.toString(source.getValue()));
+        }
+    }                                   
+
+    private void copyToClipboard(java.awt.event.ActionEvent evt) {                                 
+        String myString = PasswordBox.getText();
+        StringSelection stringSelection = new StringSelection (myString);
+        Clipboard clpbrd = Toolkit.getDefaultToolkit().getSystemClipboard ();
+        clpbrd.setContents (stringSelection, null);
+    }                                
+
+
+                       
+    private javax.swing.JButton MakeButton;
+    private javax.swing.JButton CopyButton;
+    private javax.swing.JLabel Title;
+    private javax.swing.JLabel InfoNumberOfChars;
+    private javax.swing.JScrollPane jScrollPane1;
+    private static javax.swing.JSlider NumberSlider;
+    private javax.swing.JLabel PassWordLength;
+    public static javax.swing.JTextArea PasswordBox;
+   
+                   
+
+
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+        throw new UnsupportedOperationException("");
+    }
+}
