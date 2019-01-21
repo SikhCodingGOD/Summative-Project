@@ -1,0 +1,15 @@
+ackage GUI;
+
+import javax.swing.JFrame;
+
+public class GUI {
+    
+    public static void main(String[] args) {
+        
+        Window window = new Window();
+        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //program stops running when window is closed
+        window.setSize(275,180);
+        window.setVisible(true);
+        
+    }
+}
