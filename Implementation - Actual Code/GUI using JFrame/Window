@@ -9,15 +9,22 @@ import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JOptionPane;
 import javax.swing.JLabel;
+import javax.swing.JComboBox;
+import javax.swing.JButton;
 
 public class Window extends JFrame {
     
-    private JLabel subTitle;
-    private JLabel mainHeading;
-    private JTextField item1;
-    private JTextField item2;
-    private JTextField item3;
-    private JPasswordField passwordField;
+    private final JLabel subTitle;
+    private final JLabel mainHeading;
+    private final JTextField item1;
+    private final JComboBox<String> dropdown;
+    private final JButton btn;
+    
+    String[] choices = {"What is your favourite TV show?","What is your mother's maiden name?",
+        "What city was your father born in?","What is the name of your favourite teacher?",
+        "What was/is the name of your first pet?","What is your favourite video game?","What is your favourite book?",
+        "What is your favourite food?","What city do you want to visit the most?","What is your favourite sports team?"
+    };
     
     public Window() {
         super("Password Manager"); //title on the window
@@ -26,55 +33,48 @@ public class Window extends JFrame {
         subTitle = new JLabel("Welcome to the Password Manager brought to you by Long & Short Inc.");
         subTitle.setToolTipText("This sentence shows up magically"); //appears when label is hovered over
         
-        mainHeading = new JLabel("Please choose a security question to start using the Password Manager.");
+        mainHeading = new JLabel("Please choose a security question to start using the Password Manager:");
+        
+        dropdown = new JComboBox<String>(choices);
+        
+        btn = new JButton("Done");
         
         item1 = new JTextField(10); //the parameter of 10 is the length of the text field
         
-        item2 = new JTextField("enter text here"); //the parameter sets default text in the field
+        GridBagConstraints grid = new GridBagConstraints();
+       
+        grid.weightx = 1; //amount of horizontal space for each grid box
+        grid.weighty = 1; //amount of vertical space for each grid box
         
-        item3 = new JTextField("uneditable", 20);
-        item3.setEditable(false); //text field is uneditable
+        grid.anchor = GridBagConstraints.PAGE_START;
+        grid.gridx = 0;
+        grid.gridy = 0;
+        grid.gridwidth = 4;
+        add(subTitle, grid);
         
-        passwordField = new JPasswordField("mypass");
         
+        grid.anchor = GridBagConstraints.PAGE_START;
+        grid.gridx = 0;
+        grid.gridy = 1;
+        grid.gridwidth = 4;
+        add(mainHeading, grid);
         
-        GridBagConstraints gc = new GridBagConstraints();
+        grid.anchor = GridBagConstraints.CENTER;
+        grid.gridx = 0;
+        grid.gridy = 3;
+        add(item1, grid);
         
-        gc.anchor = GridBagConstraints.LINE_END;
-        gc.weightx = 0.5; //amount of horizontal space for each grid box
-        gc.weighty = 0.5; //amount of vertical space for each grid box
+        grid.gridx = 0;
+        grid.gridy = 2;
+        add(dropdown, grid);
         
-        gc.gridx = 0;
-        gc.gridy = 0;
-        add(subTitle, gc);
-        
-        gc.gridx = 0;
-        gc.gridy = 1;
-        add(mainHeading, gc);
-        
-        gc.gridx = 1;
-        gc.gridy = 0;
-        add(item1, gc);
-        
-        gc.gridx = 1;
-        gc.gridy = 1;
-        add(item2, gc);
-        
-        gc.gridx = 0;
-        gc.gridy = 2;
-        add(item3, gc);
-        
-        gc.fill = GridBagConstraints.BOTH;
-        gc.gridx = 1;
-        gc.gridy = 2;
-        add(passwordField, gc);
-        
+        grid.gridx = 0;
+        grid.gridy = 4;
+        add(btn, grid);
+
         
         EventHandler handler = new EventHandler();
         item1.addActionListener(handler);
-        item2.addActionListener(handler);
-        item3.addActionListener(handler);
-        passwordField.addActionListener(handler);
         
     }
     
@@ -87,19 +87,8 @@ public class Window extends JFrame {
             if(event.getSource() == item1) {
                 string = String.format("field 1: %s", event.getActionCommand());
             }
-            else if (event.getSource() == item2) {
-                string = String.format("field 2: %s", event.getActionCommand());
-            }
-            else if (event.getSource() == item3) {
-                string = String.format("field 3: %s", event.getActionCommand());
-            }
-            else if (event.getSource() == passwordField) {
-                string = String.format("password field is: %s", event.getActionCommand());
-            }
             
             JOptionPane.showMessageDialog(null, string);
         }
-        
-    }
-    
+    }   
 }
