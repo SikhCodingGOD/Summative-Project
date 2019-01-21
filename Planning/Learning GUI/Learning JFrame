@@ -14,7 +14,7 @@ public class Window extends JFrame {
         
         object = new JLabel("I am creating a GUI!");
         object.setToolTipText("This sentence shows up magically"); //appears when label is hovered over
-        object(item1);
+        add(object);
         
     }
     
