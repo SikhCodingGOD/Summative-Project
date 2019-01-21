@@ -34,12 +34,14 @@ public class GUI extends JPanel implements ActionListener {
     private void initComponents() {
         MakeButton = new javax.swing.JButton();
         CopyButton = new javax.swing.JButton();  //making all the components for the frame
+        SpecialOption = new javax.swing.JCheckBox();
         jScrollPane1 = new javax.swing.JScrollPane();
         PasswordBox = new javax.swing.JTextArea();
         Title = new javax.swing.JLabel(); 
         NumberSlider = new javax.swing.JSlider();
         InfoNumberOfChars = new javax.swing.JLabel();
         PassWordLength = new javax.swing.JLabel();
+        SpecialCharacterText = new javax.swing.JLabel();
         
         
         MakeButton.setMnemonic('\r');      //All attributes being declared for the components
@@ -55,7 +57,7 @@ public class GUI extends JPanel implements ActionListener {
         PasswordBox.setRows(5);
         jScrollPane1.setViewportView(PasswordBox);
         Title.setText("Password Generation"); 
-        
+        SpecialCharacterText.setText("Special Characters?");
         NumberSlider.setMajorTickSpacing(5);
         NumberSlider.setMaximum(25);
         NumberSlider.setMinimum(5);    //all properties for the slider. slider is for number of characters in the password
@@ -91,7 +93,9 @@ public class GUI extends JPanel implements ActionListener {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()       
                 .addComponent(CopyButton)
-                .addComponent(MakeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(MakeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(SpecialCharacterText)        
+                .addComponent(SpecialOption))
                 .addGroup(layout.createSequentialGroup()
                 .addComponent(InfoNumberOfChars)
                 .addComponent(PassWordLength, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))     
@@ -117,7 +121,9 @@ public class GUI extends JPanel implements ActionListener {
                 .addComponent(NumberSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(CopyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(MakeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(MakeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(SpecialCharacterText)
+                .addComponent(SpecialOption, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 )
         ));
     }                        
@@ -127,7 +133,8 @@ public class GUI extends JPanel implements ActionListener {
         charactersToBeUsed = UAlphabet_CHARACTERS; 
         charactersToBeUsed += LAlphabet_CHARACTERS;    // always true    
         charactersToBeUsed += Numbers_CHARACTERS;      //these are what makes all characters be used
-        charactersToBeUsed += SCharacter_CHARACTERS;
+        if (SpecialOption.isSelected()) {
+        charactersToBeUsed += SCharacter_CHARACTERS;}
         
         PasswordScrambler pg = new PasswordScrambler(charactersToBeUsed);
         int numberOfChars = Integer.parseInt(PassWordLength.getText());    //sends to making the password
@@ -156,8 +163,10 @@ public class GUI extends JPanel implements ActionListener {
                        
     private javax.swing.JButton MakeButton;
     private javax.swing.JButton CopyButton;
+    private javax.swing.JCheckBox SpecialOption;
     private javax.swing.JLabel Title;     //all components
     private javax.swing.JLabel InfoNumberOfChars;
+    private javax.swing.JLabel SpecialCharacterText;
     private javax.swing.JScrollPane jScrollPane1;
     private static javax.swing.JSlider NumberSlider;
     private javax.swing.JLabel PassWordLength;
