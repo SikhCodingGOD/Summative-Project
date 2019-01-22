@@ -4,9 +4,14 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 public class MainWindow extends JFrame {
     private final JLabel title;
@@ -76,13 +81,28 @@ public class MainWindow extends JFrame {
         viewPW.addActionListener(new ActionListener() { //anonymous inner class defines what will happen when the 'viewPW' object is clicked
             @Override
             public void actionPerformed(ActionEvent event) {
-                
-                StoredPasswordWindow storedWindow = new StoredPasswordWindow();
-                storedWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                storedWindow.setSize(450, 300);
-                storedWindow.setVisible(true);
-                storedWindow.setResizable(false);
-                dispose();
+                int data = 0;
+                try {
+                    FileReader reader = new FileReader(new File("C:\\Users\\jovin\\Downloads\\PasswordManager\\websites.txt"));
+                    data = reader.read();
+                }
+                catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+                catch (IOException e) {
+                    e.printStackTrace();
+                }
+                if (data == -1) { //are there any saved passwords?
+                    JOptionPane.showMessageDialog(null, "You don't have any saved passwords.");
+                }
+                else {
+                    StoredPasswordWindow storedWindow = new StoredPasswordWindow();
+                    storedWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    storedWindow.setSize(450, 300);
+                    storedWindow.setVisible(true);
+                    storedWindow.setResizable(false);
+                    dispose();
+                }
             }
         });
         
@@ -101,27 +121,57 @@ public class MainWindow extends JFrame {
         
         changePW.addActionListener(new ActionListener() { //anonymous inner class defines what will happen when the 'changePW' object is clicked
             @Override
-            public void actionPerformed(ActionEvent event) {
-                
-                ChangePasswordWindow changeWindow = new ChangePasswordWindow();
-                changeWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                changeWindow.setSize(400, 250);
-                changeWindow.setVisible(true);
-                changeWindow.setResizable(false);
-                dispose();
+            public void actionPerformed(ActionEvent event) { //are there any saved passwords?
+                int data = 0;
+                try {
+                    FileReader reader = new FileReader(new File("C:\\Users\\jovin\\Downloads\\PasswordManager\\websites.txt"));
+                    data = reader.read();
+                }
+                catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+                catch (IOException e) {
+                    e.printStackTrace();
+                }
+                if (data == -1) {
+                    JOptionPane.showMessageDialog(null, "You don't have any saved passwords.");
+                }                
+                else {
+                    ChangePasswordWindow changeWindow = new ChangePasswordWindow();
+                    changeWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    changeWindow.setSize(400, 250);
+                    changeWindow.setVisible(true);
+                    changeWindow.setResizable(false);
+                    dispose();
+                }
             }
         });
         
         deletePW.addActionListener(new ActionListener() { //anonymous inner class defines what will happen when the 'changePW' object is clicked
             @Override
             public void actionPerformed(ActionEvent event) {
-                
-                DeletePasswordWindow deleteWindow = new DeletePasswordWindow();
-                deleteWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                deleteWindow.setSize(400, 250);
-                deleteWindow.setVisible(true);
-                deleteWindow.setResizable(false);
-                dispose();
+                int data = 0;
+                try { //are there any saved passwords?
+                    FileReader reader = new FileReader(new File("C:\\Users\\jovin\\Downloads\\PasswordManager\\websites.txt"));
+                    data = reader.read();
+                }
+                catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+                catch (IOException e) {
+                    e.printStackTrace();
+                }
+                if (data == -1) {
+                    JOptionPane.showMessageDialog(null, "You don't have any saved passwords.");
+                }                
+                else {
+                    DeletePasswordWindow deleteWindow = new DeletePasswordWindow();
+                    deleteWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    deleteWindow.setSize(400, 250);
+                    deleteWindow.setVisible(true);
+                    deleteWindow.setResizable(false);
+                    dispose();
+                }
             }
         });
         
@@ -130,8 +180,10 @@ public class MainWindow extends JFrame {
             public void actionPerformed(ActionEvent event) {
                 
                 RandomPasswordWindow randomWindow = new RandomPasswordWindow();
-                randomWindow.createAndShowGUI();
+                randomWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                randomWindow.setSize(500, 300);
                 randomWindow.setVisible(true);
+                randomWindow.setResizable(false);
                 dispose();
             }
         });
