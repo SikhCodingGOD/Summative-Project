@@ -10,6 +10,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
+import java.io.IOException;
+import java.io.File;
+import java.io.FileWriter;
 
 public class FirstWindow extends JFrame {   
     private final JLabel subTitle;
@@ -85,6 +88,22 @@ public class FirstWindow extends JFrame {
                     JOptionPane.showMessageDialog(null, "You forgot to answer your security question!"); //if the text box is empty, then a message will appear
                 }
                 else { //closes the current window and opens a new window (the main window)
+                    FileWriter writer = null;
+                    String question = questions.getSelectedItem().toString();
+                    String userAnswer = answer.getText();
+                    try {
+                        writer = new FileWriter(new File("C:\\Users\\jovin\\Downloads\\PasswordManager\\securityQuestion.txt"));
+                        writer.write(question);
+                        writer.write(System.lineSeparator());
+                        writer.write(userAnswer);
+                        writer.close();
+                        System.out.println("yes");
+                    }
+                    catch (IOException e) {
+                        System.out.println("no");
+                        e.printStackTrace();
+                    }
+                    
                     MainWindow mainWindow = new MainWindow();
                     mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                     mainWindow.setSize(500, 300);
