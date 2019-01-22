@@ -6,19 +6,22 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JFrame;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 
 public class MainWindow extends JFrame {
+    private final JLabel title;
     private final JButton viewPW;
     private final JButton addPW;
     private final JButton changePW;
 
     public MainWindow() {
-        super("Password Manager"); //title which appears on the top left corner of the window
+        super("Password Manager");
         setLayout(new GridBagLayout());
         
         
         //objects which will appear on the window
         
+        title = new JLabel("The Password Manager - created by Long & Short Inc.");
         
         viewPW = new JButton("View Stored Passwords");
         
@@ -37,15 +40,62 @@ public class MainWindow extends JFrame {
         
         grid.gridx = 0;
         grid.gridy = 0;
-        add(viewPW, grid);
+        add(title, grid);
         
         grid.gridx = 0;
         grid.gridy = 1;
-        add(addPW, grid);
+        add(viewPW, grid);
         
         grid.gridx = 0;
         grid.gridy = 2;
+        add(addPW, grid);
+        
+        grid.gridx = 0;
+        grid.gridy = 3;
         add(changePW,grid);
         
+        
+        //event handling
+        
+        
+        viewPW.addActionListener(new ActionListener() { //anonymous inner class defines what will happen when the 'viewPW' object is clicked
+            @Override
+            public void actionPerformed(ActionEvent event) {
+                
+                StoredPasswordWindow storedWindow = new StoredPasswordWindow();
+                storedWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                storedWindow.setSize(500, 300);
+                storedWindow.setVisible(true);
+                storedWindow.setResizable(false);
+                dispose();
+            }
+        });
+        
+        addPW.addActionListener(new ActionListener() { //anonymous inner class defines what will happen when the 'addPW' object is clicked
+            @Override
+            public void actionPerformed(ActionEvent event) {
+                
+                AddPasswordWindow addWindow = new AddPasswordWindow();
+                addWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                addWindow.setSize(550, 300);
+                addWindow.setVisible(true);
+                addWindow.setResizable(false);
+                dispose();
+            }
+        });
+        
+        changePW.addActionListener(new ActionListener() { //anonymous inner class defines what will happen when the 'changePW' object is clicked
+            @Override
+            public void actionPerformed(ActionEvent event) {
+                
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                mainWindow.setSize(600, 300);
+                mainWindow.setVisible(true);
+                mainWindow.setResizable(false);
+                dispose();
+            }
+        });
     }
 }
+
