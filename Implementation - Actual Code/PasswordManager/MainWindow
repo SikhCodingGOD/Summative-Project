@@ -13,6 +13,7 @@ public class MainWindow extends JFrame {
     private final JButton viewPW;
     private final JButton addPW;
     private final JButton changePW;
+    private final JButton deletePW;
 
     public MainWindow() {
         super("Password Manager");
@@ -29,6 +30,8 @@ public class MainWindow extends JFrame {
         
         changePW = new JButton("Change Password");
         
+        deletePW = new JButton("Delete A Stored Password");
+        
         
         //layout of the window
         
@@ -42,6 +45,7 @@ public class MainWindow extends JFrame {
         grid.gridy = 0;
         add(title, grid);
         
+        grid.anchor = GridBagConstraints.PAGE_START;
         grid.gridx = 0;
         grid.gridy = 1;
         add(viewPW, grid);
@@ -54,6 +58,10 @@ public class MainWindow extends JFrame {
         grid.gridy = 3;
         add(changePW,grid);
         
+        grid.gridx = 0;
+        grid.gridy = 4;
+        add(deletePW, grid);
+        
         
         //event handling
         
@@ -64,7 +72,7 @@ public class MainWindow extends JFrame {
                 
                 StoredPasswordWindow storedWindow = new StoredPasswordWindow();
                 storedWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                storedWindow.setSize(500, 300);
+                storedWindow.setSize(450, 300);
                 storedWindow.setVisible(true);
                 storedWindow.setResizable(false);
                 dispose();
@@ -77,7 +85,7 @@ public class MainWindow extends JFrame {
                 
                 AddPasswordWindow addWindow = new AddPasswordWindow();
                 addWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                addWindow.setSize(550, 300);
+                addWindow.setSize(500, 300);
                 addWindow.setVisible(true);
                 addWindow.setResizable(false);
                 dispose();
@@ -88,11 +96,24 @@ public class MainWindow extends JFrame {
             @Override
             public void actionPerformed(ActionEvent event) {
                 
-                MainWindow mainWindow = new MainWindow();
-                mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                mainWindow.setSize(600, 300);
-                mainWindow.setVisible(true);
-                mainWindow.setResizable(false);
+                ChangePasswordWindow changeWindow = new ChangePasswordWindow();
+                changeWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                changeWindow.setSize(400, 250);
+                changeWindow.setVisible(true);
+                changeWindow.setResizable(false);
+                dispose();
+            }
+        });
+        
+        deletePW.addActionListener(new ActionListener() { //anonymous inner class defines what will happen when the 'changePW' object is clicked
+            @Override
+            public void actionPerformed(ActionEvent event) {
+                
+                DeletePasswordWindow deleteWindow = new DeletePasswordWindow();
+                deleteWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                deleteWindow.setSize(400, 250);
+                deleteWindow.setVisible(true);
+                deleteWindow.setResizable(false);
                 dispose();
             }
         });
