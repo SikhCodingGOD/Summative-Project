@@ -1,0 +1,125 @@
+package PasswordManager;
+
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JFrame;
+import javax.swing.JTextField;
+import javax.swing.JOptionPane;
+import javax.swing.JLabel;
+import javax.swing.JComboBox;
+import javax.swing.JButton;
+import java.io.IOException;
+import java.io.File;
+import java.util.*;
+import java.io.*; 
+import java.nio.file.*;;
+import java.io.FileWriter;
+
+public class AnswerSecurityQuestion extends JFrame  {   
+    private final JLabel subTitle;
+    private final JLabel mainHeading;
+    private final JTextField answer;
+    private final JLabel UserQuestion;
+    private final JButton doneButton;
+    
+    
+    String[] choices = {"What is your favourite TV show?","What is your mother's maiden name?",
+        "What city was your father born in?","What is the name of your favourite teacher?",
+        "What was/is the name of your first pet?","What is your favourite video game?","What is your favourite book?",
+        "What is your favourite food?","What city do you want to visit the most?","What is your favourite sports team?"
+    }; //options for the JComboBox
+    
+    public AnswerSecurityQuestion() {
+        super("Password Manager"); //title which will appear in the top left corner of the window
+        setLayout(new GridBagLayout());
+        
+        
+        //defining objects which will appear on the window
+        
+        
+        subTitle = new JLabel("Welcome to The Password Manager brought to you by Long & Short Inc.");
+        
+        mainHeading = new JLabel("Please Answer Your Security Question to enter:");
+        
+        UserQuestion = new JLabel("Your Question"); 
+        
+        doneButton = new JButton("Done");
+        
+        answer = new JTextField(24); //24 is the length of the text field
+        
+        
+        //creating the layout of the window
+        
+        
+        GridBagConstraints grid = new GridBagConstraints();
+       
+        grid.weightx = 1; //amount of horizontal space for each grid box
+        grid.weighty = 1; //amount of vertical space for each grid box
+        
+        grid.anchor = GridBagConstraints.PAGE_START;
+        grid.gridx = 0;
+        grid.gridy = 0;
+        add(subTitle, grid);
+        
+        grid.anchor = GridBagConstraints.PAGE_START;
+        grid.gridx = 0;
+        grid.gridy = 1;
+        add(mainHeading, grid);
+        
+        grid.anchor = GridBagConstraints.CENTER;
+        grid.gridx = 0;
+        grid.gridy = 3;
+        add(answer, grid);
+        
+        grid.gridx = 0;
+        grid.gridy = 2;
+        add(UserQuestion, grid);
+        
+        grid.gridx = 0;
+        grid.gridy = 4;
+        add(doneButton, grid);
+        
+        
+        //event handling
+        
+        
+        doneButton.addActionListener(new ActionListener()  { //anonymous inner class defines what will happen when the 'doneButton' object is clicked
+            @Override
+            public void actionPerformed(ActionEvent event) {
+                if ("".equals(answer.getText())) {
+                    JOptionPane.showMessageDialog(null, "You forgot to answer your security question!"); //if the text box is empty, then a message will appear
+                }
+                else { //closes the current window and opens a new window (the main window)
+                    
+                    
+                    
+                    
+                    
+                        
+                        if (answer.getText().equals("")){
+                        System.out.println("Passwordright");
+                       }
+                    
+                    
+
+                    
+                    
+                  
+                    
+                    
+                    MainWindow mainWindow = new MainWindow();
+                    mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    mainWindow.setSize(500, 300);
+                    mainWindow.setVisible(true);
+                    mainWindow.setResizable(false);
+                    dispose();
+                }
+            }
+        });
+    }
+    
+    
+   
+}
