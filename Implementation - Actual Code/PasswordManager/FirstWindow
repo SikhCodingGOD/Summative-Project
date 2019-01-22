@@ -87,7 +87,7 @@ public class FirstWindow extends JFrame {
                 if ("".equals(answer.getText())) {
                     JOptionPane.showMessageDialog(null, "You forgot to answer your security question!"); //if the text box is empty, then a message will appear
                 }
-                else { //closes the current window and opens a new window (the main window)
+                else { //write question and answer to a file
                     FileWriter writer = null;
                     String question = questions.getSelectedItem().toString();
                     String userAnswer = answer.getText();
@@ -101,6 +101,8 @@ public class FirstWindow extends JFrame {
                     catch (IOException e) {
                         e.printStackTrace();
                     }
+                    
+                     //closes the current window and opens a new window (the main window)
                     
                     MainWindow mainWindow = new MainWindow();
                     mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
