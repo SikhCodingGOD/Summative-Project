@@ -6,11 +6,11 @@ public class GUI {
     
     public static void main(String[] args) {
 
-        FirstWindow window = new FirstWindow();
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //program stops running when window is closed
-        window.setSize(700, 300);
-        window.setVisible(true);
-        window.setResizable(false);
-        
+        FirstWindow firstWindow = new FirstWindow();
+        firstWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //program stops running when window is closed
+        firstWindow.setSize(700, 300);
+        firstWindow.setVisible(true);
+        firstWindow.setResizable(false);
+
     }
 }
