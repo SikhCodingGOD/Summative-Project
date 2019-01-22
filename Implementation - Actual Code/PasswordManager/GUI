@@ -11,7 +11,7 @@ public class GUI {
     public static void main(String[] args) {
         int data = 0;
         try {
-            FileReader reader = new FileReader(new File("C:\\Users\\jovin\\Downloads\\PasswordManager\\securityQuestion.txt"));
+            FileReader reader = new FileReader(new File("C:\\Users\\csweb\\Documents\\NetBeansProjects\\PasswordManager\\securityQuestion.txt"));
             data = reader.read();
         }
         catch (FileNotFoundException e) {
@@ -28,7 +28,12 @@ public class GUI {
             firstWindow.setResizable(false);
         }
         else {
-            //another window will go here
+           AnswerSecurityQuestion answerSecurityQuestion = new AnswerSecurityQuestion();
+           answerSecurityQuestion.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+           answerSecurityQuestion.setSize(500, 300);
+           answerSecurityQuestion.setVisible(true);
+           answerSecurityQuestion.setResizable(false);
+            
         }
     }
 }
