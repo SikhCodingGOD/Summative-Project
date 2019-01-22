@@ -1,0 +1,16 @@
+package PasswordManager;
+
+import javax.swing.JFrame;
+
+public class GUI {
+    
+    public static void main(String[] args) {
+
+        FirstWindow firstWindow = new FirstWindow();
+        firstWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //program stops running when window is closed
+        firstWindow.setSize(700, 300);
+        firstWindow.setVisible(true);
+        firstWindow.setResizable(false);
+
+    }
+}
