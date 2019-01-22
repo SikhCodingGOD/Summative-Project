@@ -1,0 +1,34 @@
+Algorithm
+
+- First time the program is opened, the user will set a security question
+    - next time the program is opened, the user will have to correctly answer the security question to proceed
+- Then there will be a main menu with 5 options
+    - add password
+        - Enter website name
+        - Enter password name
+        - Return button to go back to main menu
+        - Add button
+    - change password
+        - List of websites with stored passwords
+        - Return button
+        - Next button
+            - Will go to another window
+            - This window will display the old password
+            - Text box to enter new password
+            - Return button
+            - Change password button
+    - view stored password
+        - List of websites with stored passwords
+        - Return button
+        - View button
+            - Goes to another window which will display the password stored for that website
+    - delete password
+        - List of websites with stored passwords
+        - Return button
+        - Delete button
+    - generate password
+        - Scroll bar to specify the length of the password
+        - Button to generate password
+        - Button to copy password to clipboard
+        - Check box to chose if you want a password with special characters or not
+
