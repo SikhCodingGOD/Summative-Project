@@ -11,34 +11,40 @@ import javax.swing.JLabel;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 
-public class Window extends JFrame {
-    
+public class FirstWindow extends JFrame {   
     private final JLabel subTitle;
     private final JLabel mainHeading;
-    private final JTextField item1;
-    private final JComboBox<String> dropdown;
-    private final JButton btn;
+    private final JTextField answer;
+    private final JComboBox<String> questions;
+    private final JButton doneButton;
     
     String[] choices = {"What is your favourite TV show?","What is your mother's maiden name?",
         "What city was your father born in?","What is the name of your favourite teacher?",
         "What was/is the name of your first pet?","What is your favourite video game?","What is your favourite book?",
         "What is your favourite food?","What city do you want to visit the most?","What is your favourite sports team?"
-    };
+    }; //options for the JComboBox
     
-    public Window() {
-        super("Password Manager"); //title on the window
-        setLayout(new GridBagLayout()); //default layout
+    public FirstWindow() {
+        super("Password Manager"); //title which will appear in the top left corner of the window
+        setLayout(new GridBagLayout());
+        
+        
+        //defining objects which will appear on the window
+        
         
         subTitle = new JLabel("Welcome to the Password Manager brought to you by Long & Short Inc.");
-        subTitle.setToolTipText("This sentence shows up magically"); //appears when label is hovered over
         
         mainHeading = new JLabel("Please choose a security question to start using the Password Manager:");
         
-        dropdown = new JComboBox<String>(choices);
+        questions = new JComboBox<>(choices); //the parameter defines the options which will appear in the dropdown menu
         
-        btn = new JButton("Done");
+        doneButton = new JButton("Done");
         
-        item1 = new JTextField(10); //the parameter of 10 is the length of the text field
+        answer = new JTextField(24); //24 is the length of the text field
+        
+        
+        //creating the layout of the window
+        
         
         GridBagConstraints grid = new GridBagConstraints();
        
@@ -48,46 +54,41 @@ public class Window extends JFrame {
         grid.anchor = GridBagConstraints.PAGE_START;
         grid.gridx = 0;
         grid.gridy = 0;
-        grid.gridwidth = 4;
         add(subTitle, grid);
-        
         
         grid.anchor = GridBagConstraints.PAGE_START;
         grid.gridx = 0;
         grid.gridy = 1;
-        grid.gridwidth = 4;
         add(mainHeading, grid);
         
         grid.anchor = GridBagConstraints.CENTER;
         grid.gridx = 0;
         grid.gridy = 3;
-        add(item1, grid);
+        add(answer, grid);
         
         grid.gridx = 0;
         grid.gridy = 2;
-        add(dropdown, grid);
+        add(questions, grid);
         
         grid.gridx = 0;
         grid.gridy = 4;
-        add(btn, grid);
-
+        add(doneButton, grid);
         
-        EventHandler handler = new EventHandler();
-        item1.addActionListener(handler);
-        
-    }
-    
-    private class EventHandler implements ActionListener {
-        
-        public void actionPerformed(ActionEvent event) { //automatically executed when an event occurs
-            
-            String string = "";
-            
-            if(event.getSource() == item1) {
-                string = String.format("field 1: %s", event.getActionCommand());
+        doneButton.addActionListener(new ActionListener() { //anonymous inner class defines what will happen when the 'doneButton' object is clicked
+            @Override
+            public void actionPerformed(ActionEvent event) {
+                if ("".equals(answer.getText())) {
+                    JOptionPane.showMessageDialog(null, "You forgot to answer your security question!"); //if the text box is empty, then a message will appear
+                }
+                else { //closes the current window and opens a new window (the main window)
+                    MainWindow mainWindow = new MainWindow();
+                    mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    mainWindow.setSize(700, 300);
+                    mainWindow.setVisible(true);
+                    mainWindow.setResizable(false);
+                    dispose();
+                }
             }
-            
-            JOptionPane.showMessageDialog(null, string);
-        }
-    }   
+        });
+    }
 }
