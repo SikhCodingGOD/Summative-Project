@@ -1,0 +1,14 @@
+Client --> Dave (Connor's Uncle)
+
+Good:
+- Loved the GUI setup
+- Said it was a create way to store passwords
+- Liked the warning messages when a text box is left empty
+
+Improve:
+- Wanted an option to completely delete a password
+- Asked if the program could generate strong passwords that he could use
+
+We are going to create two more buttons on the main window which will lead to two new windows:
+1. A window where you can use to delete a password for a specific website
+2. A window where you can generate a strong password for a length of your choosing and a button to copy that password to your clipboard
