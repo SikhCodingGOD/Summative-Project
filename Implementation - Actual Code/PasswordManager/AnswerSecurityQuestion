@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.io.IOException;
+
 public class AnswerSecurityQuestion extends JFrame  {   
     private final JLabel subTitle;
     private final JLabel mainHeading;
@@ -33,7 +34,6 @@ public class AnswerSecurityQuestion extends JFrame  {
             reader = new BufferedReader(new FileReader(file));
             question = reader.readLine();
             userANS = reader.readLine();
-            System.out.print(userANS);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -45,7 +45,7 @@ public class AnswerSecurityQuestion extends JFrame  {
             }
         }
         
-        final String userAnswer = userANS; //now the variable can be used in the actionListener method
+        final String userAnswer = userANS; //variable must be final so it can be used in the actionListener method
         
         //defining objects which will appear on the window
         
