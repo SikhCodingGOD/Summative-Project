@@ -14,6 +14,7 @@ public class MainWindow extends JFrame {
     private final JButton addPW;
     private final JButton changePW;
     private final JButton deletePW;
+    private final JButton randomPW;
 
     public MainWindow() {
         super("Password Manager");
@@ -31,6 +32,8 @@ public class MainWindow extends JFrame {
         changePW = new JButton("Change Password");
         
         deletePW = new JButton("Delete A Stored Password");
+        
+        randomPW = new JButton("Generate Random Password");
         
         
         //layout of the window
@@ -61,6 +64,10 @@ public class MainWindow extends JFrame {
         grid.gridx = 0;
         grid.gridy = 4;
         add(deletePW, grid);
+        
+        grid.gridx = 0;
+        grid.gridy = 5;
+        add(randomPW, grid);
         
         
         //event handling
@@ -117,6 +124,16 @@ public class MainWindow extends JFrame {
                 dispose();
             }
         });
+        
+        randomPW.addActionListener(new ActionListener() { //anonymous inner class defines what will happen when the 'changePW' object is clicked
+            @Override
+            public void actionPerformed(ActionEvent event) {
+                
+                RandomPasswordWindow randomWindow = new RandomPasswordWindow();
+                randomWindow.createAndShowGUI();
+                randomWindow.setVisible(true);
+                dispose();
+            }
+        });
     }
 }
-
