@@ -1,0 +1,15 @@
+Test 1:
+- problems with return button --> the main menu size is different that originally when it is returned to
+- program keeps asking for a security question to be chosen even when a question has already been chosen
+
+Solution:
+- had to change the JFrame code to keep the size of the main menu the same when the return button is used
+- fixed an error in the if else statement. Now, when a security question has already been chose, you have to correctly
+answer that question to gain access to the program
+
+Test 2:
+- delete button on delete window is deleting ALL the passwords, not just the chosen password
+
+Solution:
+- Changed the code for the file writer so it rewrites all the passwords to the file except for the one chosen to be deleted. Before,
+the writer was rewriting spaces instead of the actual passwords
