@@ -10,7 +10,7 @@ public class GUI {
     
     public static void main(String[] args) {
         int data = 0;
-        try {
+        try { //has the security question been chosen yet?
             FileReader reader = new FileReader(new File("C:\\Users\\jovin\\Downloads\\PasswordManager\\securityQuestion.txt"));
             data = reader.read();
         }
@@ -27,7 +27,7 @@ public class GUI {
             firstWindow.setVisible(true);
             firstWindow.setResizable(false);
         }
-        else {
+        else { //if the security question has been chosen
            AnswerSecurityQuestion answerSecurityQuestion = new AnswerSecurityQuestion();
            answerSecurityQuestion.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
            answerSecurityQuestion.setSize(500, 300);
