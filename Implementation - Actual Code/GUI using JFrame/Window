@@ -74,6 +74,10 @@ public class FirstWindow extends JFrame {
         grid.gridy = 4;
         add(doneButton, grid);
         
+        
+        //event handling
+        
+        
         doneButton.addActionListener(new ActionListener() { //anonymous inner class defines what will happen when the 'doneButton' object is clicked
             @Override
             public void actionPerformed(ActionEvent event) {
