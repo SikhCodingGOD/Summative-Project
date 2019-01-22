@@ -1,0 +1,69 @@
+package PasswordManager;
+
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+
+
+public class ViewWindow extends JFrame {
+    private final JLabel heading;
+    private final JLabel pW;
+    private final JButton returnBtn;
+    
+    public ViewWindow(String website,String password) {
+        super("Password Manager"); //title which appears on the top left corner of the window
+        setLayout(new GridBagLayout());
+        
+        
+        //objects in window
+        
+        
+        heading = new JLabel("Your password for " + website + " is:");
+        
+        pW = new JLabel(password);
+        
+        returnBtn = new JButton("Go back to main page");
+        
+        
+        //layout of window
+        
+        
+        GridBagConstraints grid = new GridBagConstraints();
+        
+        grid.weightx = 1; //amount of horizontal space for each grid box
+        grid.weighty = 1; //amount of vertical space for each grid box
+        
+        grid.anchor = GridBagConstraints.PAGE_END;
+        grid.gridx = 0;
+        grid.gridy = 0;
+        add(heading, grid);
+        
+        grid.anchor = GridBagConstraints.CENTER;
+        grid.gridy = 1;
+        add(pW, grid);
+        
+        grid.gridy = 2;
+        add(returnBtn, grid);
+        
+        
+        //event handling
+        
+        
+        returnBtn.addActionListener(new ActionListener() { 
+            @Override
+            public void actionPerformed(ActionEvent event) {
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                mainWindow.setSize(500, 300);
+                mainWindow.setVisible(true);
+                mainWindow.setResizable(false);
+                dispose();
+            }
+        });
+    }
+}
