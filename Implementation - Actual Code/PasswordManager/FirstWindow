@@ -92,7 +92,7 @@ public class FirstWindow extends JFrame {
                     String question = questions.getSelectedItem().toString();
                     String userAnswer = answer.getText();
                     try {
-                        writer = new FileWriter(new File("C:\\Users\\csweb\\Documents\\NetBeansProjects\\PasswordManager\\securityQuestion.txt"));
+                        writer = new FileWriter(new File("C:\\Users\\jovin\\Downloads\\PasswordManager\\securityQuestion.txt"));
                         writer.write(question);
                         writer.write(System.lineSeparator());
                         writer.write(userAnswer);
