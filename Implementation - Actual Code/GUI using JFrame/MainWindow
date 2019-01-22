@@ -1,0 +1,56 @@
+package PasswordManager;
+
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JFrame;
+import javax.swing.JTextField;
+import javax.swing.JPasswordField;
+import javax.swing.JOptionPane;
+import javax.swing.JLabel;
+import javax.swing.JComboBox;
+import javax.swing.JButton;
+
+public class MainWindow extends JFrame {
+    private final JButton viewPW;
+    private final JButton addPW;
+    private final JButton changePW;
+
+    public MainWindow() {
+        super("Password Manager"); //title which appears on the top left corner of the window
+        setLayout(new GridBagLayout());
+        
+        
+        //objects which will appear on the window
+        
+        
+        viewPW = new JButton("View Stored Passwords");
+        
+        addPW = new JButton("Add Password");
+        
+        changePW = new JButton("Change Password");
+        
+        
+        //layout of the window
+        
+        
+        GridBagConstraints grid = new GridBagConstraints();
+        
+        grid.weightx = 1; //amount of horizontal space for each grid box
+        grid.weighty = 1; //amount of vertical space for each grid box
+        
+        grid.gridx = 0;
+        grid.gridy = 0;
+        add(viewPW, grid);
+        
+        grid.gridx = 0;
+        grid.gridy = 1;
+        add(addPW, grid);
+        
+        grid.gridx = 0;
+        grid.gridy = 2;
+        add(changePW,grid);
+        
+    }
+}
