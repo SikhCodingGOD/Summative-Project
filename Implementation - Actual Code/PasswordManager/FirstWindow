@@ -32,7 +32,7 @@ public class FirstWindow extends JFrame {
         //defining objects which will appear on the window
         
         
-        subTitle = new JLabel("Welcome to the Password Manager brought to you by Long & Short Inc.");
+        subTitle = new JLabel("Welcome to The Password Manager brought to you by Long & Short Inc.");
         
         mainHeading = new JLabel("Please choose a security question to start using the Password Manager:");
         
@@ -87,7 +87,7 @@ public class FirstWindow extends JFrame {
                 else { //closes the current window and opens a new window (the main window)
                     MainWindow mainWindow = new MainWindow();
                     mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                    mainWindow.setSize(1000, 600);
+                    mainWindow.setSize(500, 300);
                     mainWindow.setVisible(true);
                     mainWindow.setResizable(false);
                     dispose();
