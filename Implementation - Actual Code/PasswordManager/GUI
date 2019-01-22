@@ -1,16 +1,34 @@
 package PasswordManager;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import javax.swing.JFrame;
 
 public class GUI {
     
     public static void main(String[] args) {
-
-        FirstWindow firstWindow = new FirstWindow();
-        firstWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //program stops running when window is closed
-        firstWindow.setSize(700, 300);
-        firstWindow.setVisible(true);
-        firstWindow.setResizable(false);
-
+        int data = 0;
+        try {
+            FileReader reader = new FileReader(new File("C:\\Users\\jovin\\Downloads\\PasswordManager\\securityQuestion.txt"));
+            data = reader.read();
+        }
+        catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        if (data == -1) { //if no security question has been chosen yet
+            FirstWindow firstWindow = new FirstWindow();
+            firstWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //program stops running when window is closed
+            firstWindow.setSize(700, 300);
+            firstWindow.setVisible(true);
+            firstWindow.setResizable(false);
+        }
+        else {
+            //another window will go here
+        }
     }
 }
